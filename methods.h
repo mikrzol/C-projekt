@@ -6,10 +6,7 @@
 #include <sstream>
 #include "classes.h"
 
-using namespace std;
-
 class Metaklasa{
-    public:
     class A* A;
     class B* B;
     class C* C;
@@ -24,21 +21,7 @@ class Metaklasa{
     Leaf<M>* M;
 };
 
-void create_traversal_objs(){
-    Metaklasa meta;
-
-    class A obj_A;
-    meta.A =  &obj_A;
-
-    class B obj_B;
-    meta.B = &obj_B;
-
-    class C obj_C;
-    meta.C = & obj_C;
-
-    Leaf<D> obj_D;
-    
-};
+using namespace std;
 
 void save_list_to_file(){
         ofstream data;
@@ -85,14 +68,6 @@ void save_list_to_file(){
             data << obj_M_ptr->get_class_name() << "#" << obj_M_ptr->get_data() << "\n"; 
             obj_M_ptr = obj_M.get_next(obj_M_ptr);
         }
-
-/*
-        Leaf<X>* ptr = this->head;
-        while(ptr != NULL){
-           data << ptr->get_data() << "#%#" << ptr->get_class_name() << "\n"; 
-           ptr = ptr->next;
-        }
-*/
         data.close();
 };
 
@@ -135,4 +110,29 @@ void read_list_from_file(){
             obj->create_obj(stoi(seglist[1]));
         }
     }
+};
+
+void print_D_list(){
+    Leaf<D> obj;
+    obj.print_list();
+};
+void print_E_list(){
+    Leaf<E> obj;
+    obj.print_list();
+};
+void print_J_list(){
+    Leaf<J> obj;
+    obj.print_list();
+};
+void print_K_list(){
+    Leaf<K> obj;
+    obj.print_list();
+};
+void print_L_list(){
+    Leaf<L> obj;
+    obj.print_list();
+};
+void print_M_list(){
+    Leaf<M> obj;
+    obj.print_list();
 };

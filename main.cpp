@@ -7,6 +7,7 @@
 
 #include "classes.h"
 #include "methods.h"
+//#include "leaf.h"
 
 using namespace std;
 
@@ -56,7 +57,11 @@ int main(){
     vector<string> seglist= {"0", "0"};
 
     while(tryb == "wlacz"){
-        cout << "Wybierz dzialanie:\n\
+cout << "========================================================" << endl;
+if(seglist[1] != "0"){
+    cout << "Aktualnie jestes w wezle: " << seglist[1] << endl;
+};
+cout << "\nWybierz dzialanie:\n\
 CD [nazwa wezla] -> przejdz do wezla o danej nazwie" << endl;
 if(seglist[1] == "D" || seglist[1] == "E" || seglist[1] == "J" || seglist[1] == "K" || seglist[1] == "L" || seglist[1] == "M"){
     cout << "\
@@ -71,6 +76,7 @@ SAVE -> zapisz zbior do pliku\n\
 READ -> wczytaj zbior z pliku\n\
 TREE -> pokaz schemat struktury\n\
 EXIT -> zakoncz program" << endl;
+cout << "========================================================" << endl;
 
         getline(cin, wybor);
         // convert string to upper case
@@ -86,19 +92,11 @@ EXIT -> zakoncz program" << endl;
         while (getline(iss, segment, ' ')){
             seglist.push_back(segment);
         }
-
-/*
-        for(int i = 0; i < 2; i++){
-            getline(iss, segment, ' ');
-            seglist[i] = segment;
-        }
-*/
-
         string komenda = seglist[0];
         string klasa = seglist[1];
 
-
         if(komenda == "CD"){
+/*
             cout << "robie CD" << endl;
             if(klasa == "D"){
                 cout << "jestem w klasie D" << endl;
@@ -118,6 +116,84 @@ EXIT -> zakoncz program" << endl;
             if(klasa == "M"){
                 cout << "jestem w klasie M" << endl;
             }
+*/
+        }
+        if(komenda == "MO" && klasa != "0"){
+            int data = stoi(klasa);
+            if(klasa == "D"){
+                Leaf<D> obj;
+                obj.create_obj(data);
+            }
+            if(klasa == "E"){
+                Leaf<E> obj;
+                obj.create_obj(data);
+            }
+            if(klasa == "J"){
+                Leaf<J> obj;
+                obj.create_obj(data);
+            }
+            if(klasa == "K"){
+                Leaf<K> obj;
+                obj.create_obj(data);
+            }
+            if(klasa == "L"){
+                Leaf<L> obj;
+                obj.create_obj(data);
+            }
+            if(klasa == "M"){
+                Leaf<M> obj;
+                obj.create_obj(data);
+            }
+        }
+        if(komenda == "DIR"){
+            if(klasa == "A"){
+                print_D_list();
+                print_E_list();
+                print_J_list();
+                print_K_list();
+                print_L_list();
+                print_M_list();
+            }
+            if(klasa == "B"){
+                print_D_list();
+                print_E_list();
+            }
+            if(klasa == "D"){
+                print_D_list();
+            }
+            if(klasa == "E"){
+                print_E_list();
+            }
+            if(klasa == "C"){
+                print_J_list();
+                print_K_list();
+                print_L_list();
+                print_M_list();
+            }
+            if(klasa == "F"){
+                print_L_list();
+                print_M_list();
+            }
+            if(klasa == "I"){
+                print_L_list();
+                print_M_list();
+            }
+            if(klasa == "L"){
+                print_L_list();
+            }
+            if(klasa == "M"){
+                print_M_list();
+            }
+            if(klasa == "G"){
+                print_J_list();
+                print_K_list();
+            }
+            if(klasa == "J"){
+                print_J_list();
+            }
+            if(klasa == "K"){
+                print_K_list();
+            }   
         }
         if(komenda == "TREE"){
             cout << "SCHEMAT STRUKTURY:\n\
@@ -134,6 +210,5 @@ D\t\tE\t F\t\tG\n\n\
         }
 
     }
-    create_traversal_objs();
     return 1;
 }
